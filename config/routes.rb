@@ -1,4 +1,10 @@
 Library::Application.routes.draw do
+  get "users/new"
+  root 'static_pages#home'
+  match '/home', to: 'static_pages#home', via: 'get'
+  match '/login', to: 'static_pages#login', via: 'get'
+  match '/signup', to: 'users#new', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
