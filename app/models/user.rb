@@ -1,22 +1,10 @@
-class User 
-
-	attr_accessor : :name, :email, :id
-
-	def initialize (attributes = {})
-		@name = attributes[:name]
-		@email = attributes[:email]
-		@id = attributes[:id]
-	end
-
-	def get_name
-		"#{@name}"
-	end
-
-	def get_id
-		"#{@id}"
-	end
-
-	def get_email
-		"#{@name} email : #{@email}"
-	end
+class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+  validates :name, presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence:   true,
+                    format:     { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  has_secure_password
+  validates :password, length: { minimum: 6 }
 end
