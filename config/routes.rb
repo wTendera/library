@@ -1,5 +1,6 @@
 Library::Application.routes.draw do
   resources :users
+  resources :books
   root 'static_pages#home'
   match '/home', to: 'static_pages#home', via: 'get'
   match '/login', to: 'static_pages#login', via: 'get'
