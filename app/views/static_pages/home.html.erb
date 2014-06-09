@@ -3,6 +3,7 @@
   <h1>Library v 1.0</h1>
 
   <h2> This is the home page for the Wiktor's library  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <% if !signed_in? %>
+  	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

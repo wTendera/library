@@ -6,8 +6,13 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <h2> Borrowed books : <h2>
-      	
+      <p> Rented books : 
+          <ul>
+            <% @user.rents.each do |u|%>
+              <li> <%= u.name %></li>
+            <% end %>
+          </ul>
+      </p>
     </section>
   </aside>
 </div>

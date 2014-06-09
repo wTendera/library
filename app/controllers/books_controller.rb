@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 	end
 
 	def book_params
-		params.reqire(:book).permit(:name)
+		params.require(:book).permit(:name)
 	end
 
 	def borrow
@@ -29,6 +29,5 @@ class BooksController < ApplicationController
 
 	def index
 	    @books = Book.all
-	    render 'showAll'
 	end
 end

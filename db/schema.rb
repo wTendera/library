@@ -11,18 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609161955) do
+ActiveRecord::Schema.define(version: 20140609193841) do
 
   create_table "books", force: true do |t|
     t.string "name"
+    t.string "author"
+  end
+
+  create_table "rents", force: true do |t|
+    t.integer "user_id"
+    t.integer "book_id"
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name",            null: false
+    t.string   "email",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
