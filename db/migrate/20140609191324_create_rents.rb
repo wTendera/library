@@ -5,4 +5,8 @@ class CreateRents < ActiveRecord::Migration
       t.references :book
     end
   end
+
+  def destroy
+    drop_table :rents
+  end
 end
