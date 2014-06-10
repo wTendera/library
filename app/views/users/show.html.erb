@@ -9,7 +9,7 @@
       <p> Rented books : 
           <ul>
             <% @user.rents.each do |u|%>
-              <li> <%= u.name %></li>
+              <li> <%= u.book.name %></li>
             <% end %>
           </ul>
       </p>

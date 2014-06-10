@@ -6,13 +6,12 @@
         <h1 class = "clearfix">
           	<div class = "show_books_to_rent">
           		<%= link_to u.name, u %>
-          		<% if signed_in? %>
-		          	<%= link_to "Rent", '#',  class: "btn btn btn-primary rent-button"
-		          	 %>
+          		<% if signed_in? && !Rent.exists?(user: current_user, book: u) %>
+                <%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => u.id } }, :method=> :post, class: "btn btn btn-primary rent-button"%>
           	</div>
           <% end %>
         </h1>
       <% end %>
     </section>
   </aside>
-</div>
+</div>  

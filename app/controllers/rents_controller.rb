@@ -1,14 +1,18 @@
 class RentsController < ApplicationController
+	def new
+	end
+	
 	def create
-		@rent = Rent.new(book_params)
+		@rent = current_user.rents.build(rent_params)
 		if @rent.save
-			flash[:success] = "You rented " @rent.book.name "!"
-      		redirect_to @rent.user
-      	end
+			flash[:success] = "Book rented!"
+		else
+			flash[:fail] = "Not this time"	
+		end
+      	redirect_to books_path
 	end
 
-	def book_params
-		params.reqire(:rent).permit(:user, :book)
+	def rent_params
+		params.require(:rent).permit(:book_id)
 	end
-
-end
+end	

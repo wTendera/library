@@ -21,12 +21,6 @@ class BooksController < ApplicationController
 		params.require(:book).permit(:name)
 	end
 
-	def borrow
-		@book = Book.find(params[:id])
-		#if user logged in
-		#zarejestruj wypozyczenie
-	end
-
 	def index
 	    @books = Book.all
 	end
