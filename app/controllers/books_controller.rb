@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
+	include UsersHelper
 	def new
+		if !is_admin?
+			redirect_to books_path
+		end
 		@book = Book.new
 	end
 
@@ -8,6 +12,9 @@ class BooksController < ApplicationController
 	end
 
 	def create
+		if !is_admin?
+			redirect_to books_path
+		end
 		@book = Book.new(book_params)
 		if @book.save
 			flash[:success] = @book.name + " added!"

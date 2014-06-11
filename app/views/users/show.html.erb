@@ -14,7 +14,6 @@
                   <% if current_user == @user && current_user != nil%>
                     <%= link_to "Give back", rent_url(u), method: :delete, class: "btn btn btn-primary rent-button" %>
                   <% end %>
-
               </li>
             </ul>
           <% end %>

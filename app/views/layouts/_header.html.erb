@@ -6,7 +6,10 @@
           <li><%= link_to "Home",    root_path %></li>
           <li><%= link_to "All Users",    users_path %></li>
           <li><%= link_to "Avaiable books", books_path %></li>
-          <%if signed_in? %>
+          <% if is_admin? %>
+            <li> <%= link_to "Add book", new_book_path %> </li>
+          <% end %>
+          <% if signed_in? %>
             <li><%= link_to "My account", current_user %></li>
             <li><%= link_to "Sign out", signout_path, method: :delete %></li>
           <% else %>

@@ -7,8 +7,11 @@ class UsersController < ApplicationController
    		@user = User.find(params[:id])
   end
 
-  def create
+  def create  
     @user = User.new(user_params)
+    if User.count == 0
+      @user.update_attribute(:admin, true)
+    end
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to our library"
@@ -16,6 +19,7 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   def user_params
@@ -26,4 +30,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  
 end

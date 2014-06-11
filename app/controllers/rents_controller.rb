@@ -15,7 +15,7 @@ class RentsController < ApplicationController
 	def destroy
 		rent = current_user.rents.find(params[:id])
 		if rent == nil
-			flash[:fail] = "Damn!"
+			flash[:fail] = "Something went wrong :("
 		else
 			flash[:success] = "Book was given back!"
 			rent.destroy
