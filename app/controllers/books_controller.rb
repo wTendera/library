@@ -15,8 +15,26 @@ class BooksController < ApplicationController
 		if !is_admin?
 			redirect_to books_path
 		end
+
 		@book = Book.new(book_params)
+
+		pic = params[:book][:cover]
+
+		# original_filename
+		# 	^ to dzielisz po kropkach i ostatni element rozszerzenie
+
+		# tworzenie nazwy# zapis nazwy
+
+
+
 		if @book.save
+		
+			FileUtils.copy(pic.tempfile, 
+				"#{Rails.root}/public/covers/#{@book.id.to_s}.jpg")
+
+			# na koncu wsadzasz rozszerzenie
+
+
 			flash[:success] = @book.name + " added!"
       		redirect_to @book
       	else
@@ -25,7 +43,7 @@ class BooksController < ApplicationController
 	end
 
 	def book_params
-		params.require(:book).permit(:name, :cover)
+		params.require(:book).permit(:name)
 	end
 
 	def index

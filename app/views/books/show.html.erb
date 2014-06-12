@@ -4,7 +4,7 @@
     <section>
       <h1>
         <%= @book.name %>
-        <%= image_tag @book.cover.url(:square) %>
+        <%= image_tag("/covers/#{@book.id.to_s}.jpg") %>
       </h1>
       	
     </section>
