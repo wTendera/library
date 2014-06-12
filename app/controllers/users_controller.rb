@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def new
+      if signed_in?
+        redirect_to root_path
+      end
+
     	@user = User.new
   end
 
@@ -7,12 +11,7 @@ class UsersController < ApplicationController
    		@user = User.find(params[:id])
   end
 
-  def create  
-    #################### to correct ################
-    if signed_in?
-      redirect_to root_path
-    end
-    ###############################################
+  def create
     @user = User.new(user_params)
     if User.count == 0
       @user.update_attribute(:admin, true)
