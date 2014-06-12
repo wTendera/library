@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610183615) do
+ActiveRecord::Schema.define(version: 20140612130857) do
 
   create_table "books", force: true do |t|
-    t.string "name"
-    t.string "author"
+    t.string   "name"
+    t.string   "author"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "rents", force: true do |t|
