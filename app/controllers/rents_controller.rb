@@ -3,6 +3,11 @@ class RentsController < ApplicationController
 	end
 	
 	def create
+		if Rent.exists?(params[:id])
+			flash[:fail] = "Not this time"
+			redirect_to books_path
+		end
+
 		@rent = current_user.rents.build(rent_params)
 		if @rent.save
 			flash[:success] = "Book rented!"

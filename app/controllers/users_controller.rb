@@ -8,6 +8,11 @@ class UsersController < ApplicationController
   end
 
   def create  
+    #################### to correct ################
+    if signed_in?
+      redirect_to root_path
+    end
+    ###############################################
     @user = User.new(user_params)
     if User.count == 0
       @user.update_attribute(:admin, true)
