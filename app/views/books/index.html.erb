@@ -8,10 +8,8 @@
           <h1 class = "clearfix" >
             	<div class = "show_books_to_rent" >
             		<li> 
-                  <%= link_to u.name, u %>
-            		  <% if signed_in? && !Rent.exists?(user: current_user, book: u) %>
-                  <%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => u.id } }, :method=> :post, class: "btn btn btn-primary rent-button"%>
-                  <% end %>
+                  <h4> Title: <%= link_to u.name, u %> </h4>
+            		  <h5> Author: <%= u.author %> </h5>
                 </li>
             	</div>
           </h1>

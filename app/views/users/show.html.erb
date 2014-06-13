@@ -1,23 +1,23 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1 class="clearfix">
+  <section class="span8">
+    <h1 class="clearfix">
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
-      <p> Rented books : 
-          <% @user.rents.each do |u|%>
-            <ul>
-              <li> 
-                <%= u.book.name %>
-                  <% if current_user == @user && current_user != nil%>
-                    <%= link_to "Give back", rent_url(u), method: :delete, class: "btn btn btn-primary rent-button" %>
-                  <% end %>
-              </li>
-            </ul>
-          <% end %>
-      </p>
-    </section>
-  </aside>
+    </h1>
+    
+    <h3> Rented books : </h3> 
+    <ul>
+    <% @user.rents.each do |u|%>
+        <li> 
+          <h4> <%= u.book.name %>
+            <% if current_user == @user && current_user != nil%>
+              <%= link_to "Give back", rent_url(u), method: :delete, class: "btn btn btn-primary rent-button" %>
+            <% end %>
+          </h4>
+        </li>
+      <% end %>
+    </ul>
+    
+  </section>
 </div>
