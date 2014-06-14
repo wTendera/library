@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+class tracer {
+	public:
+	static int all;
+	mutable int out;
+	int size;
+	string* tab;
+	
+	tracer() {
+		all++;
+		size = 0;
+		tab = new string[0];
+		out = 0;
+	}
+	
+	tracer(string *tab, int size) {
+		all++;
+		this->size = size;
+		this->tab = new string[size];
+		for(int i = 0 ; i < size; i++)
+			this->tab[i] = tab[i];
+		out = 0;
+	}
+	
+	tracer( const tracer& other ) : size(other.size) {
+		out = 0;
+		all++;
+		tab = new string[size];
+		for (int i = 0; i < size; i++)
+			tab[i] = other.tab[i];
+	}
+	
+	~tracer() {
+		delete[] tab;
+		all--;
+	}
+	
+	tracer& operator=( const tracer& other ) {
+		if(this == &other)
+			return *this;
+		delete[] tab;
+		size = other.size;
+		tab = new string[size];
+		for (int i = 0; i < size; i++)
+			this->tab[i] = other.tab[i];
+		return *this;
+	}
+	
+	static int objectno() {
+		return all;
+	}
+	
+	int printno() const{
+		return out;
+	}
+	
+	void concat(int k, int l) {
+		this->tab[k] += this->tab[l];
+	}
+
+};
+
+int tracer::all = 0;
+
+std::ostream & operator<<(std::ostream & Str, tracer const & v) {
+    v.out++;
+    for(int i = 0; i < v.size; i++)
+		Str<<v.tab[i]<<endl;
+    return Str;
+}
+

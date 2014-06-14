@@ -1,4 +1,4 @@
-<% provide(:title, 'Add book') %>
+ <% provide(:title, 'Add book') %>
 <h1>Add new book</h1>
 
 <div class="row">
@@ -9,7 +9,7 @@
       <%= f.label :author %>
       <%= f.text_field :author %>
       <%= f.label :cover %>
-      <%= f.file_field :cover %>
+      <%= f.file_field :cover , class: "btn btn-default btn-file", style: "margin-bottom:5px"%>
 
       <br>
 

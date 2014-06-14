@@ -1,20 +1,22 @@
 <% provide(:title, 'Avaiable books') %>
 <div class="row">
-  <aside class="span4">
     <section>
-      <h1 style="margin-bottom: 30px "> Avaiable books :</h1>
-      <ul>
-        <% @books.each do |u| %>
-          <h1 class = "clearfix" >
-            	<div class = "show_books_to_rent" >
-            		<li> 
-                  <h4> Title: <%= link_to u.name, u %> </h4>
-            		  <h5> Author: <%= u.author %> </h5>
-                </li>
-            	</div>
-          </h1>
-        <% end %>
-      </ul>
+      <h1 style="margin-bottom: 30px "> Avaiable books</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th style="width: 300px">Title</th>
+          <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |u|%>
+            <tr> 
+              <th><%= link_to u.name, u%></th>
+              <th> <%= u.author %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </section>
-  </aside>
 </div>  

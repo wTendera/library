@@ -12,15 +12,18 @@ class BooksController < ApplicationController
   end
 
   def create
-	if !is_admin?
-	  redirect_to books_path
+    if !is_admin?
+      redirect_to books_path
   	end
 
   	@book = Book.new(book_params)
   	pic = params[:book][:cover]
+    arry = pic.original_filename.split(".")
+    arry[-1].downcase
+    puts arry
 
   	if @book.save
-      if !pic.nil?
+      if !pic.nil? and arry[-1] == "jpg"
         FileUtils.copy(pic.tempfile, 
   		    "#{Rails.root}/public/covers/#{@book.id.to_s}.jpg")
         @book.update_attributes(cover_file_name: "#{@book.id.to_s}.jpg")
