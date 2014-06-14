@@ -6,3 +6,29 @@ This project contains simple library created in Ruby on Rails.
 * Ruby version : 2.0.0
 
 * Rails version : 4.0.5
+
+To start application you must get into folder containing it and than following steps in console :
+
+* bundle
+
+* rake db:create
+
+* rake db:migrate
+
+* take db:seed
+
+* rails s
+
+Than you open your browser and go to http://localhost:3000/
+
+
+First user created is admin, who has possibilty to add books, unlike other users. 
+
+All users can borrow each book, there is no limit either for book to be borrowed 
+or user to have rents, however user can't borrow book twice or more at the same time.
+
+You can borrow books only when you are logged in. 
+
+You can give book back from your user profile only when you are logged in.
+
+Avatar for users is taken from gravatar.
