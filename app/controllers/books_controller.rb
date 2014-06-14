@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     puts arry
 
   	if @book.save
-      if !pic.nil? and arry[-1] == "jpg"
+      if !pic.nil? and %w(gif jpg jpeg).include?(arry[-1])
         FileUtils.copy(pic.tempfile, 
   		    "#{Rails.root}/public/covers/#{@book.id.to_s}.jpg")
         @book.update_attributes(cover_file_name: "#{@book.id.to_s}.jpg")
