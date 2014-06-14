@@ -2,14 +2,14 @@
 <div class="row">
 
   <section class="span8">
-	<h3>Title : <%= @book.name %> </h3>
-	<h4>Author : <%= @book.author %></h4>
-	<% if signed_in? && !is_rented(@book) %>
-	  <%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => @book.id } }, :method=> :post, class: "btn-primary btn btn-primary rent-button"%>
-	<% end %>
+  <h3>Title : <%= @book.name %> </h3>
+  <h4>Author : <%= @book.author %></h4>
+  <% if signed_in? && !is_rented(@book) %>
+    <%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => @book.id } }, :method=> :post, class: "btn-primary btn btn-primary rent-button"%>
+  <% end %>
   </section>
   <aside class="span4">
-  	 <% if has_cover?(@book) %>
+    <% if has_cover?(@book) %>
       <%= image_tag("/covers/#{@book.id.to_s}.jpg", class: "thumbnail pull-right") %>
     <% else %>
       <%= image_tag("https://dl.dropboxusercontent.com/u/12280856/index.jpeg", class: "thumbnail pull-right") %>

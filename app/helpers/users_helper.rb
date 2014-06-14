@@ -6,10 +6,10 @@ module UsersHelper
   end
 
   def is_admin?
-  	if current_user.nil?
-  		false
-  	else
-    	current_user.admin
+    if current_user.nil?
+      false
+    else
+      current_user.admin
     end
   end
 end

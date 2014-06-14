@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<p>This project contains simple library created in Ruby on Rails 4.0.5 with ruby 2.0.0 </p>
+
 == README
 
 This README would normally document whatever steps are necessary to get the
