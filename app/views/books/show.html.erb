@@ -1,14 +1,14 @@
 <% provide(:title, @book.name) %>
 <div class="row">
 
-	<section class="span8">
-		<h3>Title : <%= @book.name %> </h3>
-		<h4>Author : <%= @book.author %></h4>
-		<% if signed_in? && !Rent.exists?(user: current_user, book: @book) %>
-      		<%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => @book.id } }, :method=> :post, class: "btn btn btn-primary rent-button"%>
-      	<% end %>
-	</section>
-	<aside class="span4">
-		<%= image_tag("/covers/#{@book.id.to_s}.jpg", class: "thumbnail pull-right") %>
-	</aside>
+  <section class="span8">
+	<h3>Title : <%= @book.name %> </h3>
+	<h4>Author : <%= @book.author %></h4>
+	<% if signed_in? && !is_rented(@book) %>
+	  <%= link_to "Rent", {:controller => "rents", :action => "create", :rent => { :book_id => @book.id } }, :method=> :post, class: "btn-primary btn btn-primary rent-button"%>
+	<% end %>
+  </section>
+  <aside class="span4">
+	<%= image_tag("/covers/#{@book.id.to_s}.jpg", class: "thumbnail pull-right") %>
+  </aside>
 </div>

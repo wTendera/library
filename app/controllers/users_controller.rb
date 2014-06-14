@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   def new
-      if signed_in?
-        redirect_to root_path
-      end
+    if signed_in?
+      redirect_to root_path
+    end
 
-    	@user = User.new
+    @user = User.new
   end
 
   def show
-   		@user = User.find(params[:id])
+   	@user = User.find(params[:id])
   end
 
   def create
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-  		params.require(:user).permit(:name, :email, :password,
+  	params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
   end
   
