@@ -20,13 +20,16 @@ class BooksController < ApplicationController
   	pic = params[:book][:cover]
 
   	if @book.save
-	  FileUtils.copy(pic.tempfile, 
-		"#{Rails.root}/public/covers/#{@book.id.to_s}.jpg")
-	  flash[:success] = @book.name + " added!"
-	  redirect_to @book
-	else
-	  render 'new'
-	end
+      if !pic.nil?
+        FileUtils.copy(pic.tempfile, 
+  		    "#{Rails.root}/public/covers/#{@book.id.to_s}.jpg")
+        @book.update_attributes(cover_file_name: "#{@book.id.to_s}.jpg")
+      end
+  	  flash[:success] = @book.name + " added!"
+  	  redirect_to @book
+  	else
+  	  render 'new'
+  	end
   end
 
   def book_params

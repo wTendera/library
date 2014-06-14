@@ -9,6 +9,11 @@
 	<% end %>
   </section>
   <aside class="span4">
-	<%= image_tag("/covers/#{@book.id.to_s}.jpg", class: "thumbnail pull-right") %>
+  	 <% if has_cover?(@book) %>
+      <%= image_tag("/covers/#{@book.id.to_s}.jpg", class: "thumbnail pull-right") %>
+    <% else %>
+      <%= image_tag("https://dl.dropboxusercontent.com/u/12280856/index.jpeg", class: "thumbnail pull-right") %>
+    <% end %>
+
   </aside>
 </div>
