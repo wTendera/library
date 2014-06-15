@@ -31,4 +31,4 @@ You can borrow books only when you are logged in.
 
 You can give book back from your user profile only when you are logged in.
 
-Avatar for users is taken from gravatar.
+Avatars for users are taken from gravatar.
