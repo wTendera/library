@@ -18,9 +18,10 @@ class BooksController < ApplicationController
 
     @book = Book.new(book_params)
     pic = params[:book][:cover]
-    arry = pic.original_filename.split(".")
-    arry[-1].downcase
-    puts arry
+    if !pic.nil?
+      arry = pic.original_filename.split(".")
+      arry[-1].downcase
+    end
 
     if @book.save
       if !pic.nil? and %w(gif jpg jpeg).include?(arry[-1])
